@@ -1,0 +1,6 @@
+{
+  "name": "Cafe Me Chennai",
+  "description": "Where Memories Brew — A cozy vegetarian café in the heart of K.K. Nagar, Chennai serving great coffee, comfort food and good vibes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cafe-crimson: #8F2118;
+  --color-mustard-awning: #F4B323;
+  --color-maroon-roast: #641A12;
+  --color-espresso-dark: #1C120D;
+  --color-cream-canvas: #FDFBF7;
+  --color-linen-surface: #F8F1E5;
+  --color-biscuit-border: #E9DDCC;
+  --color-filter-foam: #FFF4DC;
+  
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #fff1eb;
+  --color-surface-container: #ffeae0;
+  --color-surface-container-high: #f9e4db;
+  --color-surface-container-highest: #f3ded5;
+
+  --color-on-surface: #241914;
+  --color-on-surface-variant: #58413e;
+  
+  --color-primary: #6e0604;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #8f2118;
+  --color-on-primary-container: #ffa396;
+
+  --color-secondary: #7c5800;
+  --color-secondary-fixed: #ffdea8;
+  --color-secondary-fixed-dim: #fdbb2c;
+  --color-secondary-container: #fdbb2c;
+  --color-on-secondary-fixed: #271900;
+  --color-on-secondary-fixed-variant: #5e4200;
+
+  --color-outline: #8c716d;
+  --color-outline-variant: #dfbfba;
+  
+  --font-display: 'Syne', sans-serif;
+  --font-headline: 'Syne', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #241914;
+    background-color: #FDFBF7;
+  }
+
+  body {
+    background-color: #FDFBF7;
+    color: #241914;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: #F4B323;
+    color: #1C120D;
+  }
+}
+
+/* Custom Awning Stripe Pattern */
+.bg-awning-stripe {
+  background-image: repeating-linear-gradient(90deg, #8F2118 0px, #8F2118 18px, #F4B323 18px, #F4B323 36px);
+}
+
+.bg-awning-stripe-dense {
+  background-image: repeating-linear-gradient(90deg, #8F2118 0px, #8F2118 12px, #F4B323 12px, #F4B323 24px);
+}
+
+.bg-awning-stripe-diagonal {
+  background-image: repeating-linear-gradient(45deg, #8F2118 0px, #8F2118 14px, #F4B323 14px, #F4B323 28px);
+}
+
+/* Continuously moving red/yellow decorative stripe (LEFT -> RIGHT) */
+@keyframes stripe-move-right {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 36px 0;
+  }
+}
+
+.animate-stripe-right {
+  background-image: repeating-linear-gradient(90deg, #8F2118 0px, #8F2118 18px, #F4B323 18px, #F4B323 36px);
+  background-size: 36px 100%;
+  animation: stripe-move-right 1.6s linear infinite;
+  will-change: background-position;
+}
+
+/* Continuously moving horizontal marquee / ticker (RIGHT -> LEFT) */
+@keyframes marquee-left {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 30s linear infinite;
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ticker-container:hover .animate-marquee-left {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-stripe-right {
+    animation: none;
+  }
+  .animate-marquee-left {
+    animation: none;
+    transform: none;
+  }
+}
+
+/* Custom Scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Material Symbols sizing helper */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+}
+.material-symbols-outlined.filled {
+  font-variation-settings: 'FILL' 1;
+}
